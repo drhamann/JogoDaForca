@@ -1,32 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JogoDaForca
+﻿namespace JogoDaForca
 {
     public class Verificador
     {
-        public static List<string> CriarJogo(string palavraRamdom) 
+        public static List<string> CriarJogo(string palavraRamdom)
         {
 
-            List<string> enigma = new List<string>();
+            List<string> enigma;
+            enigma = palavraRamdom.Split().ToList();
 
-            return enigma = palavraRamdom.Split().ToList();
+            return enigma;
         }
 
-        public static void Responder(List<string> enigma) 
+        public static void Responder(List<string> enigma)
         {
             string resposta = " ";
             int erros = 0;
             List<string> acertos = new List<string>();
             List<string> letrasUsada = new List<string>();
-            
 
-            for(int i = 0; acertos.Count < enigma.Count && erros < 6; i++) 
+            do
             {
-                
+
                 Console.WriteLine("Escolha uma letra A...Z: ");
                 resposta = Console.ReadLine().ToLower();
                 letrasUsada.Add(resposta);
@@ -35,33 +29,41 @@ namespace JogoDaForca
 
                 foreach (string letra in letrasUsada)
                 {
-                 Console.WriteLine(letra);
+                    Console.Write(letra);
                 }
 
-                foreach(string letra in enigma) 
+                Console.WriteLine(" ");
+
+                for (int i = 0; i < enigma.Count; i++)
                 {
-                    if (resposta == letra)
+
+                    if (resposta == enigma[i])
                     {
-                        acertos[i] = letra;
 
-                        foreach (string letras in acertos)
-                        {
-                            Console.Write(letra);
-                        }
+                        acertos[i] = enigma[i];
+
                     }
-
-                    else if (resposta != letra)
-                    {
-                        erros++;
-                        Console.WriteLine("Errou!!!");
-                    }
-
                 }
 
-                
-            }
+
+
+                if (acertos == null)
+                {
+                    erros = letrasUsada.Count;
+                    Console.WriteLine("Errou!!!");
+                }
+
+                else
+                {
+                    foreach (string letra in acertos)
+                        Console.WriteLine(letra);
+                }
 
             }
-        }    
+            while (acertos.Count < enigma.Count && erros < 6);
+        }
+
     }
+}
+
 

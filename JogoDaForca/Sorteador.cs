@@ -16,7 +16,7 @@ namespace JogoDaForca
             palavras = new string[30];
             string palavrao = "ABACATE ABACAXI ACEROLA AÇAÍ ARAÇA ABACATE BACABA BACURI BANANA CAJÁ CAJÚ CARAMBOLA CUPUAÇU GRAVIOLA GOIABA JABUTICABA JENIPAPO MAÇÃ MANGABA MANGA MARACUJÁ MURICI PEQUI PITANGA PITAYA SAPOTI TANGERINA UMBU UVA UVAIA";
 
-            palavras = palavrao.Split(" ");
+            palavras = palavrao.ToLower().Split(" ");
 
             return palavras;
         }
