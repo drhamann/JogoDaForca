@@ -10,10 +10,16 @@
 
         public JogoDaForca()
         {
-            palavras = new string[30];
+            palavras =
+                [
+                "ABACATE", "ABACAXI", "ACEROLA", "AÇAÍ", "ARAÇA", "BACABA", "BACURI",
+                "BANANA", "CAJÁ", "CAJÚ", "CARAMBOLA", "CUPUAÇU", "GRAVIOLA",
+                "GOIABA", "JABUTICABA", "JENIPAPO", "MAÇÃ", "MANGABA", "MANGA",
+                "MARACUJÁ", "MURICI", "PEQUI", "PITANGA", "PITAYA", "SAPOTI",
+                "TANGERINA", "UMBU", "UVA", "UVAIA"
+        ];
 
-            string palavrao = "ABACATE ABACAXI ACEROLA AÇAÍ ARAÇA BACABA BACURI BANANA CAJÁ CAJÚ CARAMBOLA CUPUAÇU GRAVIOLA GOIABA JABUTICABA JENIPAPO MAÇÃ MANGABA MANGA MARACUJÁ MURICI PEQUI PITANGA PITAYA SAPOTI TANGERINA UMBU UVA UVAIA";
-            palavras = palavrao.ToLower().Split(" ");
+
             Selecionar();
             acertos = new char[palavraParaAdivinhar.Length];
 
@@ -77,6 +83,27 @@
                 }
             }
             return true;
+        }
+
+        // Método para exibir o desenho do boneco baseado no número de erros
+        private void ExibirDesenhoBoneco(int erros)
+        {
+            string cabeca = erros > 0 ? "(oo)" : "    ";
+            string bracos = erros > 1 ? "// \\" : "    ";
+            string tronco = erros > 2 ? "  |" : "   ";
+            string pernas = erros > 3 ? "// \\" : "    ";
+
+            string desenho = $@"
+=========
++----------+
+!       {cabeca}   
+!       {bracos}  
+!       {tronco}
+!       {pernas}
+!
+=========";
+
+            Console.WriteLine(desenho);
         }
     }
 }
